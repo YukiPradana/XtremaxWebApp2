@@ -6,7 +6,7 @@ using XtremaxWebApp2.Data.DataModel;
 
 namespace XtremaxWebApp2.Data.Repository
 {
-    interface ITicketRepository
+    interface ITicketRepository:IRepository
     {
         IEnumerable<Ticket> GetAllTicket();
         Ticket GetTicketById(int id);
