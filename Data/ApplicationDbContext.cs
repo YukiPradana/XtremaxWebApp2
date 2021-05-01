@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using XtremaxWebApp2.Data.DataModel;
 
 namespace XtremaxWebApp2.Data
 {
@@ -12,5 +13,9 @@ namespace XtremaxWebApp2.Data
             : base(options)
         {
         }
+
+        public DbSet<Status> Status { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Ticket> Tickets { get; set; }
     }
 }
