@@ -6,9 +6,9 @@ using XtremaxWebApp2.Data.DataModel;
 
 namespace XtremaxWebApp2.Data.Repository
 {
-    interface ICategoryRepository
+    interface ICategoryRepository:IRepository
     {
-        IEnumerable<Category> GetALlCategory();
+        IEnumerable<Category> GetAllCategory();
         Category GetCategoryById(int id);
         void CreateCategory(Category category);
         void UpdateCategory(Category category);

@@ -6,7 +6,7 @@ using XtremaxWebApp2.Data.DataModel;
 
 namespace XtremaxWebApp2.Data.Repository
 {
-    interface IStatusRepository
+    interface IStatusRepository:IRepository
     {
         IEnumerable<Status> GetAllStatus();
         Status GetStatusById(int id);
