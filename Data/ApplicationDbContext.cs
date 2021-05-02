@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using XtremaxWebApp2.Data.DataModel;
+using XtremaxWebApp2.Models;
 
 namespace XtremaxWebApp2.Data
 {
@@ -17,5 +18,6 @@ namespace XtremaxWebApp2.Data
         public DbSet<Status> Status { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
+        public DbSet<XtremaxWebApp2.Models.CreateTicketViewModel> CreateTicketViewModel { get; set; }
     }
 }
