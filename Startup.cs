@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using XtremaxWebApp2.Data;
+using XtremaxWebApp2.Data.Repository;
 
 namespace XtremaxWebApp2
 {
@@ -34,6 +35,10 @@ namespace XtremaxWebApp2
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+            services.AddScoped<TicketRepository>();
+            services.AddScoped<UserRepository>();
+            services.AddScoped<StatusRepository>();
+            services.AddScoped<CategoryRepository>();
 
 
             services.Configure<IdentityOptions>(options =>
