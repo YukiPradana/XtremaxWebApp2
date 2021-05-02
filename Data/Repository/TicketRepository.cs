@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,30 +10,46 @@ namespace XtremaxWebApp2.Data.Repository
     public class TicketRepository : ITicketRepository
     {
         private readonly ApplicationDbContext _context;
+
+        public TicketRepository(ApplicationDbContext context)
+        {
+            _context = context;
+
+        }
+
         public void CreateTicket(Ticket ticket)
         {
+            if (ticket==null)
+            {
+                throw new ArgumentNullException(nameof(ticket));
+            }
             _context.Tickets.Add(ticket);
         }
 
         public void DeleteTicket(Ticket ticket)
         {
+            if (ticket == null)
+            {
+                throw new ArgumentNullException(nameof(ticket));
+            }
             _context.Tickets.Remove(ticket);
         }
 
         public IEnumerable<Ticket> GetAllTicket()
         {
+
             return _context.Tickets.ToList();
         }
 
         public IEnumerable<Ticket> GetAssignedTicket()
         {
-            //return _context.Tickets.ToList().Where<>
-            return new List<Ticket>;
+            return _context.Tickets.Where(x=>x.AsigneeId!=null).ToList();
+            
         }
 
-        public IEnumerable<Ticket> GetCreatedTicket()
+        public IEnumerable<Ticket> GetCreatedTicket(IdentityUser user)
         {
-            throw new NotImplementedException();
+            return _context.Tickets.Where(x => x.CreatorId.Equals(user.Id)).ToList();
         }
 
         public Ticket GetTicketById(int id)

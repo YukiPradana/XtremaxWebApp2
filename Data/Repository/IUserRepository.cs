@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace XtremaxWebApp2.Data.Repository
 {
-    interface IUserRepository
+    interface IUserRepository:IRepository
     {
         IEnumerable<IdentityUser> GetAlluser();
         IdentityUser GetUserById(string id);

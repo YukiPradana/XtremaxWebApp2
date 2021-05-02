@@ -9,8 +9,11 @@ namespace XtremaxWebApp2.Data.Repository
     public class CategoryRepository : ICategoryRepository
     {
 
-        private readonly ApplicationDbContext _context;
-
+        private readonly ApplicationDbContext _context ;
+        public CategoryRepository(ApplicationDbContext context)
+        {
+            _context = context;
+        }
         public void CreateCategory(Category category)
         {
             _context.Categories.Add(category);
@@ -36,7 +39,7 @@ namespace XtremaxWebApp2.Data.Repository
             throw new NotImplementedException();
         }
 
-        bool IRepository.SaveChanges()
+        public bool SaveChanges()
         {
             return (_context.SaveChanges() >= 0);
         }

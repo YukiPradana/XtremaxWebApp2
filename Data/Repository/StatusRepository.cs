@@ -8,7 +8,13 @@ namespace XtremaxWebApp2.Data.Repository
 {
     public class StatusRepository : IStatusRepository
     {
-        private readonly ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context ;
+
+
+        public StatusRepository(ApplicationDbContext context)
+        {
+            _context = context;
+        }
         public IEnumerable<Status> GetAllStatus()
         {
             List<Status>statusList= _context.Status.ToList();
@@ -23,7 +29,7 @@ namespace XtremaxWebApp2.Data.Repository
             return status;
         }
 
-        bool IRepository.SaveChanges()
+        public bool SaveChanges()
         {
             return (_context.SaveChanges() >= 0);
         }
